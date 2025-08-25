@@ -1,4 +1,7 @@
+using global::Godot;
+using global::System.Linq;
 using _System = global::System;
+using _SystemCollectionsGeneric = global::System.Collections.Generic;
 using _Json = global::System.Text.Json;
 using _JsonNodes = global::System.Text.Json.Nodes;
 using _Godot = global::Godot;
@@ -39,7 +42,7 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
     public override float _GetPriority() {
         return 1.0f;
     }
-    public override Error _Import(string SourceFile, string SavePath, _GodotCollections.Dictionary Options, _GodotCollections.Array<string> PlatformVariants, _GodotCollections.Array<string> GenFiles) {
+    public override _Godot.Error _Import(string SourceFile, string SavePath, _GodotCollections.Dictionary Options, _GodotCollections.Array<string> PlatformVariants, _GodotCollections.Array<string> GenFiles) {
         _Godot.Translation Translation = new();
 
         string Locale = SourceFile.GetBaseName();
@@ -57,7 +60,7 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
             case null:
                 return;
             case _JsonNodes.JsonObject Object:
-                foreach (KeyValuePair<string, _JsonNodes.JsonNode?> Property in Object) {
+                foreach (_SystemCollectionsGeneric.KeyValuePair<string, _JsonNodes.JsonNode?> Property in Object) {
                     switch (Property.Value?.GetValueKind()) {
                         case _Json.JsonValueKind.String:
                             Translation.AddMessage($"{Prefix}{Property.Key}", (string)Property.Value!);
