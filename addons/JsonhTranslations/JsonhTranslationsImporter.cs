@@ -45,7 +45,7 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
     public override _Godot.Error _Import(string SourceFile, string SavePath, _GodotCollections.Dictionary Options, _GodotCollections.Array<string> PlatformVariants, _GodotCollections.Array<string> GenFiles) {
         _Godot.Translation Translation = new();
 
-        string Locale = SourceFile.GetBaseName();
+        string Locale = SourceFile.GetFile().GetBaseName();
         Translation.Locale = Locale;
 
         string Jsonh = _Godot.FileAccess.GetFileAsString(SourceFile);
