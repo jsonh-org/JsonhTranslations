@@ -1,3 +1,4 @@
+#if TOOLS
 using _Godot = global::Godot;
 
 namespace JsonhTranslations;
@@ -15,3 +16,4 @@ public partial class JsonhTranslationsPlugin : _Godot.EditorPlugin {
         JsonhTranslationsImporter = null;
     }
 }
+#endif

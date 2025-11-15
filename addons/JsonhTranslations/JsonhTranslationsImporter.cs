@@ -1,3 +1,4 @@
+#if TOOLS
 using global::Godot;
 using global::System.Linq;
 using _System = global::System;
@@ -94,3 +95,4 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
         }
     }
 }
+#endif
