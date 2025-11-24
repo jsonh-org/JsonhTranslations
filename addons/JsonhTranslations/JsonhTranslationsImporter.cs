@@ -50,7 +50,9 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
         Translation.Locale = Locale;
 
         string Jsonh = _Godot.FileAccess.GetFileAsString(SourceFile);
-        _JsonNodes.JsonNode? Node = _JsonhCs.JsonhReader.ParseNode(Jsonh).Value;
+        _JsonNodes.JsonNode? Node = _JsonhCs.JsonhReader.ParseNode(Jsonh, new _JsonhCs.JsonhReaderOptions() {
+            ParseSingleElement = true,
+        }).Value;
         AddEntries(Translation, Node);
 
         return _Godot.ResourceSaver.Save(Translation, $"{SavePath}.{_GetSaveExtension()}");
