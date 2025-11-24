@@ -1,6 +1,6 @@
 # JSONH Translations for Godot 4x
 
-A Godot plugin for importing translation files in [JSONH v1](https://github.com/jsonh-org/Jsonh) format using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
+A Godot plugin for importing translation files in [JSONH V1 & V2](https://github.com/jsonh-org/Jsonh) format using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
 
 This plugin requires Godot with C# .NET support.
 
