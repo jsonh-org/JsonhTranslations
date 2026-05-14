@@ -100,7 +100,7 @@ public static class JsonhTranslationsExtensions {
                 }
                 break;
             default:
-                throw new _System.NotSupportedException(Node.GetType().Name);
+                throw new _System.NotImplementedException(Node.GetType().Name);
         }
     }
 }
