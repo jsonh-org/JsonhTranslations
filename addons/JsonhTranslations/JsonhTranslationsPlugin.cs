@@ -5,10 +5,10 @@ namespace JsonhTranslations;
 
 [_Godot.Tool]
 public partial class JsonhTranslationsPlugin : _Godot.EditorPlugin {
-    private JsonhTranslations.JsonhTranslationsImporter? JsonhTranslationsImporter;
+    private JsonhTranslationsImporter? JsonhTranslationsImporter;
 
     public override void _EnterTree() {
-        JsonhTranslationsImporter = new JsonhTranslations.JsonhTranslationsImporter();
+        JsonhTranslationsImporter = new JsonhTranslationsImporter();
         AddImportPlugin(JsonhTranslationsImporter);
     }
     public override void _ExitTree() {
