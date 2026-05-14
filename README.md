@@ -1,16 +1,16 @@
 # JSONH Translations for Godot 4x
 
-A Godot plugin for importing translation files in [JSONH V1 & V2](https://github.com/jsonh-org/Jsonh) format using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
+A Godot plugin for importing translation files in [JSONH V2](https://github.com/jsonh-org/Jsonh) format using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
 
 This plugin requires Godot with C# .NET support.
 
 ## Setup
 
 1. Install the [JsonhCs](https://www.nuget.org/packages/JsonhCs) NuGet package.
-1. [Install the addon and enable the plugin.](https://docs.godotengine.org/en/4.0/tutorials/plugins/editor/installing_plugins.html)
+1. [Install the addon and enable the plugin.](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html)
 1. Build the .NET project.
 1. [Find your desired locale code](https://docs.godotengine.org/en/stable/tutorials/i18n/locales.html).
-1. Create a text file called "{locale_code}.jsonh". For example, English is "en.jsonh".
+1. Create a text file called `{locale_code}.jsonh`. For example, English is `en.jsonh`.
 1. Import the text file as a "JSONH Translation".
 1. Navigate to `Project Settings > Localization > Translations` and add the text file. Change "All recognized" to "All files" and select the text file.
 1. Add the messages using the syntax below.
@@ -101,4 +101,13 @@ GREET_OPTIONS: [
 using JsonhTranslations;
 
 List<string> Messages = "GREET_OPTIONS".TrA(".{0}");
+```
+
+Add a translation dynamically:
+
+```cs
+using JsonhTranslations;
+
+Translation EnglishTranslation = JsonhTranslationsExtensions.CreateTranslationFromFile("en.jsonh");
+TranslationServer.AddTranslation(EnglishTranslation);
 ```
