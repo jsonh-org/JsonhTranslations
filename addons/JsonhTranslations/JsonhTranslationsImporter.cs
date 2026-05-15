@@ -46,7 +46,7 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
 
         if ((bool)Options["output_source_text"]) {
             string Source = _Godot.FileAccess.GetFileAsString(SourceFile);
-            Translation.SetMeta("source_text".AsStringName(), Source);
+            Translation.SetMeta("source_text", Source);
         }
 
         return _Godot.ResourceSaver.Save(Translation, $"{SavePath}.{_GetSaveExtension()}");
