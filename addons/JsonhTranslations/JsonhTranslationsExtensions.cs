@@ -1,6 +1,7 @@
 using _System = global::System;
 using _SystemCollectionsGeneric = global::System.Collections.Generic;
 using _SystemLinq = global::System.Linq;
+using _SystemIO = global::System.IO;
 using _Json = global::System.Text.Json;
 using _JsonNodes = global::System.Text.Json.Nodes;
 using _Godot = global::Godot;
@@ -60,7 +61,7 @@ public static class JsonhTranslationsExtensions {
     /// Creates a translation with a locale from the JSONH filename and messages parsed from the JSONH file.
     /// </summary>
     public static _Godot.Translation CreateTranslationFromFile(string JsonhFilePath) {
-        string Locale = _System.IO.Path.GetFileNameWithoutExtension(JsonhFilePath);
+        string Locale = _SystemIO.Path.GetFileNameWithoutExtension(JsonhFilePath);
         string Jsonh = _Godot.FileAccess.GetFileAsString(JsonhFilePath);
         return CreateTranslation(Locale, Jsonh);
     }
