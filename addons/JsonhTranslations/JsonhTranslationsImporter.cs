@@ -28,7 +28,12 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
         return "Default";
     }
     public override _GodotCollections.Array<_GodotCollections.Dictionary> _GetImportOptions(string Path, int PresetIndex) {
-        return [];
+        return [
+            new _GodotCollections.Dictionary() {
+                ["name"] = "output_source_text",
+                ["default_value"] = false,
+            },
+        ];
     }
     public override int _GetImportOrder() {
         return 0;
@@ -38,6 +43,12 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
     }
     public override _Godot.Error _Import(string SourceFile, string SavePath, _GodotCollections.Dictionary Options, _GodotCollections.Array<string> PlatformVariants, _GodotCollections.Array<string> GenFiles) {
         _Godot.Translation Translation = JsonhTranslationsExtensions.CreateTranslationFromFile(SourceFile);
+
+        if ((bool)Options["output_source_text"]) {
+            string Source = _Godot.FileAccess.GetFileAsString(SourceFile);
+            Translation.SetMeta("source_text".AsStringName(), Source);
+        }
+
         return _Godot.ResourceSaver.Save(Translation, $"{SavePath}.{_GetSaveExtension()}");
     }
 }

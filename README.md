@@ -111,3 +111,16 @@ using JsonhTranslations;
 Translation EnglishTranslation = JsonhTranslationsExtensions.CreateTranslationFromFile("en.jsonh");
 TranslationServer.AddTranslation(EnglishTranslation);
 ```
+
+## Import Options
+
+### Output Source Text
+
+Whether to include the translation file's source code as meta in the translation resource.
+
+This is useful for providing one of your translation files in your game as a template for contributors to provide their own translations.
+
+The source code be accessed with the `source_text` meta property:
+```cs
+string SourceText = (string)GD.Load<Translation>("res://en.jsonh").GetMeta("source_text", "");
+```
