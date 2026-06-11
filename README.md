@@ -1,5 +1,7 @@
 # JSONH Translations for Godot 4x
 
+[![Godot Asset Store](https://img.shields.io/github/v/release/jsonh-org/JsonhTranslations.svg?label=Godot%20Asset%20Store&logo=godotengine)](https://store.godotengine.org/asset/joyless/jsonh-translations)
+
 A Godot plugin for importing translation files in [JSONH V2](https://github.com/jsonh-org/Jsonh) format using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
 
 This plugin requires Godot with C# .NET support.
