@@ -14,14 +14,14 @@ public static class JsonhTranslationsExtensions {
     /// Translate: Finds a translation for the message, and formats the given arguments.
     /// </summary>
     public static string Tr(this string Message, params scoped _System.ReadOnlySpan<object?> FormatArgs) {
-        return string.Format(_Godot.TranslationServer.Translate(Message), FormatArgs);
+        return string.Format(_Godot.TranslationServer.Translate(new _Godot.StringName(Message)), FormatArgs);
     }
     /// <summary>
     /// Translate plural: Finds a translation for the message, first trying with the suffix appended, and formats the given arguments.
     /// </summary>
     public static string TrN(this string Message, string Suffix, params scoped _System.ReadOnlySpan<object?> FormatArgs) {
         string MessageWithSuffix = $"{Message}{Suffix}";
-        string TranslatedMessageWithSuffix = _Godot.TranslationServer.Translate(MessageWithSuffix);
+        string TranslatedMessageWithSuffix = _Godot.TranslationServer.Translate(new _Godot.StringName(MessageWithSuffix));
         if (TranslatedMessageWithSuffix != MessageWithSuffix) {
             return string.Format(TranslatedMessageWithSuffix, FormatArgs);
         }
@@ -36,7 +36,7 @@ public static class JsonhTranslationsExtensions {
         _SystemCollectionsGeneric.List<string> TranslatedMessages = [];
         for (int Index = 0; ; Index++) {
             string MessageWithSuffixAndIndex = $"{Message}{string.Format(Suffix, Index.ToString())}";
-            string TranslatedMessageWithSuffixAndIndex = _Godot.TranslationServer.Translate(MessageWithSuffixAndIndex);
+            string TranslatedMessageWithSuffixAndIndex = _Godot.TranslationServer.Translate(new _Godot.StringName(MessageWithSuffixAndIndex));
             if (TranslatedMessageWithSuffixAndIndex == MessageWithSuffixAndIndex) {
                 break;
             }
@@ -74,7 +74,7 @@ public static class JsonhTranslationsExtensions {
                 foreach (_SystemCollectionsGeneric.KeyValuePair<string, _JsonNodes.JsonNode?> Property in Object) {
                     switch (Property.Value?.GetValueKind()) {
                         case _Json.JsonValueKind.String:
-                            Translation.AddMessage($"{Prefix}{Property.Key}", (string)Property.Value!);
+                            Translation.AddMessage(new _Godot.StringName($"{Prefix}{Property.Key}"), new _Godot.StringName((string)Property.Value!));
                             break;
                         case _Json.JsonValueKind.Object:
                         case _Json.JsonValueKind.Array:
@@ -89,7 +89,7 @@ public static class JsonhTranslationsExtensions {
                 foreach ((int Index, _JsonNodes.JsonNode? Item) in _SystemLinq.Enumerable.Index(Array)) {
                     switch (Item?.GetValueKind()) {
                         case _Json.JsonValueKind.String:
-                            Translation.AddMessage($"{Prefix}{Index}", (string)Item!);
+                            Translation.AddMessage(new _Godot.StringName($"{Prefix}{Index}"), new _Godot.StringName((string)Item!));
                             break;
                         case _Json.JsonValueKind.Object:
                         case _Json.JsonValueKind.Array:
