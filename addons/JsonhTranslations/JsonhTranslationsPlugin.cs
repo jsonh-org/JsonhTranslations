@@ -1,10 +1,10 @@
 #if TOOLS
-using _Godot = global::Godot;
+#nullable enable
 
 namespace JsonhTranslations;
 
-[_Godot.Tool]
-public partial class JsonhTranslationsPlugin : _Godot.EditorPlugin {
+[Godot.Tool]
+public partial class JsonhTranslationsPlugin : Godot.EditorPlugin {
     private JsonhTranslationsImporter? JsonhTranslationsImporter;
 
     public override void _EnterTree() {

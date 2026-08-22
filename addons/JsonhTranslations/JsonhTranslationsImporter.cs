@@ -1,11 +1,10 @@
 #if TOOLS
-using _Godot = global::Godot;
-using _GodotCollections = global::Godot.Collections;
+#nullable enable
 
 namespace JsonhTranslations;
 
-[_Godot.Tool]
-public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
+[Godot.Tool]
+public partial class JsonhTranslationsImporter : Godot.EditorImportPlugin {
     public override string _GetImporterName() {
         return "JsonhTranslationsImporter";
     }
@@ -27,9 +26,9 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
     public override string _GetPresetName(int PresetIndex) {
         return "Default";
     }
-    public override _GodotCollections.Array<_GodotCollections.Dictionary> _GetImportOptions(string Path, int PresetIndex) {
+    public override Godot.Collections.Array<Godot.Collections.Dictionary> _GetImportOptions(string Path, int PresetIndex) {
         return [
-            new _GodotCollections.Dictionary() {
+            new Godot.Collections.Dictionary() {
                 ["name"] = "output_source_text",
                 ["default_value"] = false,
             },
@@ -41,15 +40,15 @@ public partial class JsonhTranslationsImporter : _Godot.EditorImportPlugin {
     public override float _GetPriority() {
         return 1.0f;
     }
-    public override _Godot.Error _Import(string SourceFile, string SavePath, _GodotCollections.Dictionary Options, _GodotCollections.Array<string> PlatformVariants, _GodotCollections.Array<string> GenFiles) {
-        _Godot.Translation Translation = JsonhTranslationsExtensions.CreateTranslationFromFile(SourceFile);
+    public override Godot.Error _Import(string SourceFile, string SavePath, Godot.Collections.Dictionary Options, Godot.Collections.Array<string> PlatformVariants, Godot.Collections.Array<string> GenFiles) {
+        Godot.Translation Translation = JsonhTranslationsExtensions.CreateTranslationFromFile(SourceFile);
 
         if ((bool)Options["output_source_text"]) {
-            string Source = _Godot.FileAccess.GetFileAsString(SourceFile);
+            string Source = Godot.FileAccess.GetFileAsString(SourceFile);
             Translation.SetMeta("source_text", Source);
         }
 
-        return _Godot.ResourceSaver.Save(Translation, $"{SavePath}.{_GetSaveExtension()}");
+        return Godot.ResourceSaver.Save(Translation, $"{SavePath}.{_GetSaveExtension()}");
     }
 }
 #endif
