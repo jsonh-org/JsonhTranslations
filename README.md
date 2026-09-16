@@ -1,4 +1,4 @@
-# JSONH Translations for Godot 4x
+# JSONH Translations for Godot 4x (C#)
 
 [![Godot Asset Store](https://img.shields.io/github/v/release/jsonh-org/JsonhTranslations.svg?label=Godot%20Asset%20Store&logo=godotengine)](https://store.godotengine.org/asset/joyless/jsonh-translations)
 
